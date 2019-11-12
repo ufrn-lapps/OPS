@@ -44,14 +44,14 @@ MPI_INC = $(foreach dir,$(shell $(MPICC) --showme:incdirs),-I$(dir))
 
 .PHONY: clean mklib
 
-TARGETS = clean core seq mpi
+TARGETS = clean core seq
 
 ifdef HDF5_INSTALL_PATH
 	TARGETS += hdf5_seq hdf5_mpi
 endif
 
 ifdef CUDA_INSTALL_PATH
-	TARGETS += cuda mpi_cuda
+	TARGETS += cuda
 endif
 
 ifdef OPENCL_INSTALL_PATH
