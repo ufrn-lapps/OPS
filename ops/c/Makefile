@@ -19,8 +19,8 @@ OPENCL_INC = -I$(OPENCL_INSTALL_PATH)/include
 #
 
 include $(OPS_INSTALL_PATH)/../makefiles/Makefile.common
-include $(OPS_INSTALL_PATH)/../makefiles/Makefile.mpi
-include $(OPS_INSTALL_PATH)/../makefiles/Makefile.cuda
+#include $(OPS_INSTALL_PATH)/../makefiles/Makefile.mpi
+#include $(OPS_INSTALL_PATH)/../makefiles/Makefile.cuda
 
 ifdef HDF5_INSTALL_PATH
   HDF5_INC 	  	:= -I$(HDF5_INSTALL_PATH)/include
@@ -44,7 +44,7 @@ MPI_INC = $(foreach dir,$(shell $(MPICC) --showme:incdirs),-I$(dir))
 
 .PHONY: clean mklib
 
-TARGETS = clean core seq mpi
+TARGETS = clean core seq
 
 ifdef HDF5_INSTALL_PATH
 	TARGETS += hdf5_seq hdf5_mpi
