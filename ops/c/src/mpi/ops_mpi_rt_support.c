@@ -1397,7 +1397,7 @@ void ops_dat_fetch_data(ops_dat dat, int part, char *data) {
   ops_dat_get_extents(dat, part, ldisp, lsize);
   for (int d = dat->block->dims; d < OPS_MAX_DIM; d++) {
     lsize[d] = 1;
-    ldisp[d] = 0;
+    ldisp[d] = 1;
   }
   lsize[0] *= dat->elem_size/dat->dim; //now in bytes
   if (dat->block->dims>3) {ops_printf("Error, ops_dat_fetch_data not implemented for dims>3\n"); exit(-1);}
@@ -1417,7 +1417,7 @@ void ops_dat_set_data(ops_dat dat, int part, char *data) {
   ops_dat_get_extents(dat, part, ldisp, lsize);
   for (int d = dat->block->dims; d < OPS_MAX_DIM; d++) {
     lsize[d] = 1;
-    ldisp[d] = 0;
+    ldisp[d] = 1;
   }
   lsize[0] *= dat->elem_size/dat->dim; //now in bytes
   if (dat->block->dims>3) {ops_printf("Error, ops_dat_set_data not implemented for dims>3\n"); exit(-1);}
