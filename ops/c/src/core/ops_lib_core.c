@@ -351,6 +351,8 @@ void ops_exit_core() {
     free(OPS_stencil_list[i]);
   }
   free(OPS_stencil_list);
+  OPS_stencil_index = 0; // Added by Vitor
+  OPS_stencil_max = 0; // Added by Vitor
   OPS_stencil_list = NULL;
 
   for (int i = 0; i < OPS_halo_index; i++) {
