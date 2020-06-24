@@ -381,7 +381,7 @@ def ops_par_loop_parse(text, macro_defs):
       loop_args.append(temp)
 
       i = text.find(search, i + 15)
-  print('\n\n')
+  #print('\n\n')
   return (loop_args)
 
 def main(source_files):
@@ -835,13 +835,13 @@ def main(source_files):
   # ops_gen_mpi_openacc(str(source_files[0]), date, consts, kernels, soa_set)
   # ops_gen_mpi_opencl(str(source_files[0]), date, consts, kernels, soa_set)
 
-  import subprocess
-  retcode = subprocess.call("which clang-format > /dev/null", shell=True)
-  if retcode == 0:
-    retcode = 0 #subprocess.call("$OPS_INSTALL_PATH/../ops_translator/c/format.sh", shell=True)
-  else:
-    print('Cannot find clang-format in PATH')
-    print('Install and add clang-format to PATH to format generated code to conform to code formatting guidelines')
+#  import subprocess
+#  retcode = subprocess.call("which clang-format > /dev/null", shell=True)
+#  if retcode == 0:
+#    retcode = 0 #subprocess.call("$OPS_INSTALL_PATH/../ops_translator/c/format.sh", shell=True)
+#  else:
+#    print('Cannot find clang-format in PATH')
+#    print('Install and add clang-format to PATH to format generated code to conform to code formatting guidelines')
 
 if __name__ == '__main__':
     if len(sys.argv) > 1:
