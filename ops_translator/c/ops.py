@@ -381,7 +381,7 @@ def ops_par_loop_parse(text, macro_defs):
       loop_args.append(temp)
 
       i = text.find(search, i + 15)
-  print('\n\n')
+  #print('\n\n')
   return (loop_args)
 
 def main(source_files):
@@ -436,8 +436,8 @@ def main(source_files):
 
   kernels_in_files = [[] for _ in range(len(source_files))]
   for a in range(0, len(source_files)):
-      print(('processing file ' + str(a) + ' of ' + str(len(source_files)) + \
-            ' ' + str(source_files[a])))
+      #print(('processing file ' + str(a) + ' of ' + str(len(source_files)) + \
+      #      ' ' + str(source_files[a])))
 
       src_file = str(source_files[a])
       f = open(src_file, 'r')
@@ -456,12 +456,12 @@ def main(source_files):
 
       inits, exits = ops_parse_calls(text)
 
-      if inits + exits > 0:
-        print(' ')
-      if inits > 0:
-        print('contains ops_init call')
-      if exits > 0:
-        print('contains ops_exit call')
+      #if inits + exits > 0:
+      #  print(' ')
+      #if inits > 0:
+      #  print('contains ops_init call')
+      #if exits > 0:
+      #  print('contains ops_exit call')
 
       ninit = ninit + inits
       nexit = nexit + exits
@@ -485,7 +485,7 @@ def main(source_files):
       #
 
       const_args = ops_decl_const_parse(text, macro_defs)
-      print((str(len(const_args))))
+      # print((str(len(const_args))))
 
       # cleanup '&' symbols from name and convert dim to integer
       if const_args:
@@ -535,9 +535,9 @@ def main(source_files):
         dim   = loop_args[i]['dim']
         block = loop_args[i]['block']
         _range   = loop_args[i]['range']
-        print(('\nprocessing kernel ' + name + ' with ' + str(nargs) + ' arguments'))
-        print(('dim: '+dim))
-        print(('range: '+str(_range)))
+        #print(('\nprocessing kernel ' + name + ' with ' + str(nargs) + ' arguments'))
+        #print(('dim: '+dim))
+        #print(('range: '+str(_range)))
 
         #
         # process arguments
@@ -570,7 +570,7 @@ def main(source_files):
             else:
                 accs[m] = l + 1
 
-            print((var[m]+' '+str(dims[m]) +' '+str(stens[m])+' '+str(accs[m])))
+            #print((var[m]+' '+str(dims[m]) +' '+str(stens[m])+' '+str(accs[m])))
 
 
           if arg_type.strip() == 'ops_arg_gbl':
@@ -588,14 +588,14 @@ def main(source_files):
             else:
                 accs[m] = l + 1
 
-            print((var[m]+' '+ str(dims[m]) +' '+str(accs[m])))
+            # print((var[m]+' '+ str(dims[m]) +' '+str(accs[m])))
 
           if arg_type.strip() == 'ops_arg_idx':
             var[m] = ''
             dims[m] = 0
             typs[m] = 'int'
             typ[m] = 'ops_arg_idx'
-            print('arg_idx')
+            # print('arg_idx')
 
 
         #
@@ -835,13 +835,13 @@ def main(source_files):
   # ops_gen_mpi_openacc(str(source_files[0]), date, consts, kernels, soa_set)
   # ops_gen_mpi_opencl(str(source_files[0]), date, consts, kernels, soa_set)
 
-  import subprocess
-  retcode = subprocess.call("which clang-format > /dev/null", shell=True)
-  if retcode == 0:
-    retcode = 0 #subprocess.call("$OPS_INSTALL_PATH/../ops_translator/c/format.sh", shell=True)
-  else:
-    print('Cannot find clang-format in PATH')
-    print('Install and add clang-format to PATH to format generated code to conform to code formatting guidelines')
+#  import subprocess
+#  retcode = subprocess.call("which clang-format > /dev/null", shell=True)
+#  if retcode == 0:
+#    retcode = 0 #subprocess.call("$OPS_INSTALL_PATH/../ops_translator/c/format.sh", shell=True)
+#  else:
+#    print('Cannot find clang-format in PATH')
+#    print('Install and add clang-format to PATH to format generated code to conform to code formatting guidelines')
 
 if __name__ == '__main__':
     if len(sys.argv) > 1:
